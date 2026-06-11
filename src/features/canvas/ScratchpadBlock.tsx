@@ -1,9 +1,9 @@
 import { useRef } from "react";
 import type { ScratchState } from "../../lib/scratch";
+import { ScratchEditor } from "./ScratchEditor";
 
-// The on-canvas scratchpad: drag by its header, type in the body, drag the
-// corner to resize, double-click the header (or hit ⤢) for full screen. All of
-// content/position/size flow up via onChange and get persisted by CanvasView.
+// The on-canvas scratchpad: drag by its header, edit in the body, drag the
+// corner to resize, double-click the header (or ⤢) for full screen.
 export function ScratchpadBlock({
   state,
   onChange,
@@ -24,7 +24,6 @@ export function ScratchpadBlock({
       <div
         className="scratch-head"
         onPointerDown={(e) => {
-          // Let the expand button receive its own click — don't capture the pointer.
           if ((e.target as HTMLElement).closest(".scratch-expand")) return;
           e.stopPropagation();
           drag.current = { sx: e.clientX, sy: e.clientY, ox: state.x, oy: state.y };
@@ -60,13 +59,10 @@ export function ScratchpadBlock({
         </button>
       </div>
 
-      <textarea
-        className="scratch-area"
-        value={state.content}
+      <ScratchEditor
+        content={state.content}
+        onChange={(content) => onChange({ ...state, content })}
         placeholder="Dump thoughts here — copy bits from your notes and organize. Saved automatically."
-        onChange={(e) => onChange({ ...state, content: e.target.value })}
-        onPointerDown={(e) => e.stopPropagation()}
-        onDoubleClick={(e) => e.stopPropagation()}
       />
 
       <div

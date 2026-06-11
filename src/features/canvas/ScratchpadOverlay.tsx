@@ -1,7 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
+import { ScratchEditor } from "./ScratchEditor";
 
-// Full-screen, distraction-free scratchpad editor. Edits the same content as the
-// on-canvas pad (so closing leaves everything where you left it). Esc to exit.
+// Full-screen, distraction-free scratchpad. Edits the same content as the
+// on-canvas pad. Esc to exit.
 export function ScratchpadOverlay({
   content,
   onChange,
@@ -11,10 +12,7 @@ export function ScratchpadOverlay({
   onChange: (content: string) => void;
   onClose: () => void;
 }) {
-  const ref = useRef<HTMLTextAreaElement>(null);
-
   useEffect(() => {
-    ref.current?.focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
@@ -31,12 +29,11 @@ export function ScratchpadOverlay({
           done ✕
         </button>
       </div>
-      <textarea
-        ref={ref}
-        className="scratch-full-area"
-        value={content}
+      <ScratchEditor
+        big
+        content={content}
+        onChange={onChange}
         placeholder="Full-screen scratch. Think out loud here."
-        onChange={(e) => onChange(e.target.value)}
       />
     </div>
   );

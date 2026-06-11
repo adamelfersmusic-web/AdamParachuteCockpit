@@ -258,13 +258,38 @@ h1, h2, h3 { margin: 0; }
   font-size: 14px; line-height: 1; cursor: pointer; padding: 2px 4px;
 }
 .scratch-expand:hover { color: var(--text); }
+.scratch-editor { flex: 1; min-height: 0; display: flex; flex-direction: column; }
+.scratch-toolbar {
+  display: flex; gap: 6px; padding: 6px 10px; flex: 0 0 auto;
+  border-bottom: 1px solid var(--border);
+}
+.stool {
+  background: var(--surface-2); border: 1px solid var(--border); border-radius: 6px;
+  padding: 3px 9px; color: var(--muted); font-size: 12px; cursor: pointer;
+}
+.stool:hover { color: var(--text); border-color: #2f3a47; }
+.stool.on { color: var(--accent); border-color: rgba(79, 140, 255, 0.5); }
 .scratch-area {
   flex: 1; min-height: 0; resize: none; border: none; outline: none;
   background: transparent; color: var(--text);
-  font: 13px/1.5 ui-sans-serif, system-ui, sans-serif; padding: 10px 12px;
+  font: 15px/1.55 ui-sans-serif, system-ui, sans-serif; padding: 10px 12px;
   user-select: text; -webkit-user-select: text; touch-action: auto;
 }
+.scratch-area.big { font-size: 20px; line-height: 1.7; padding: 24px clamp(20px, 12vw, 240px); }
 .scratch-area::placeholder { color: var(--muted); }
+.scratch-check {
+  flex: 1; min-height: 0; overflow: auto; padding: 10px 12px;
+  font-size: 15px; line-height: 1.5; user-select: text;
+}
+.scratch-check.big { font-size: 20px; line-height: 1.7; padding: 24px clamp(20px, 12vw, 240px); }
+.check-row { display: flex; gap: 10px; align-items: flex-start; padding: 4px 0; cursor: pointer; }
+.check-row input[type="checkbox"] {
+  margin: 0; margin-top: 0.25em; width: 1em; height: 1em; flex: 0 0 auto;
+  accent-color: var(--edge-todo); cursor: pointer;
+}
+.check-row.done span { color: var(--muted); text-decoration: line-through; }
+.check-text { padding: 4px 0; white-space: pre-wrap; }
+.check-empty { color: var(--muted); font-style: italic; padding: 4px 0; }
 .scratch-resize {
   position: absolute; right: 0; bottom: 0; width: 18px; height: 18px;
   cursor: nwse-resize; touch-action: none;
