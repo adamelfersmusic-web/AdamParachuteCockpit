@@ -1,97 +1,45 @@
-# The Cockpit
+# Adam's Cockpit
 
-A spatial project cockpit layered on the **Adam Parachute vault**. Net-new app —
-**separate from Adam's Deck** (the `deck/*` tag family). The Cockpit never reads
-or writes `deck` notes.
+A spatial project cockpit on top of the **Adam Parachute vault** — a sibling UI to
+Adam's Deck on the same vault. Open a project and your notes lay out as draggable
+blocks on a dot-grid; double-click one to read it as full-screen paper.
 
-> Status: **Slices 0–2** — Foundation + Home + read-only Canvas, running against an
-> in-memory mock **seeded from real vault data**. No live writes yet.
+**Live:** https://adamelfersmusic-web.github.io/AdamParachuteCockpit/
+→ click **Connect with OAuth**, sign in to your hub, and you're on your real vault.
 
-## Not touching Adam's Deck (the Deck firewall)
+## What it does
 
-The Cockpit and Adam's Deck are sibling Parachute UIs on the **same vault**, so the
-only real risk is vault data, not code. Adam's Deck owns the **`deck` tag family**
-and the top-level metadata keys **`horizon`, `done`, `tier`, `now`, `order`**.
+- **Home** — a tile per project (`project`-tagged notes), with phase, open-task
+  count, and domains. Drag a card to reprioritize.
+- **Canvas** — click a project → a dark dot-grid. Your notes appear as blocks
+  with a colored left edge by type (note=blue, todo=green, scratchpad=amber,
+  text=grey). On a project with nothing placed yet, the canvas auto-fills from
+  that project's deep status note — one block per section. Drag to rearrange,
+  drag empty space to pan.
+- **Paper** — double-click a block to open it full-screen as clean white paper
+  (read-only for now).
 
-[`guard.ts`](src/lib/vault/guard.ts) + [`GuardedVaultClient`](src/lib/vault/GuardedVaultClient.ts)
-enforce, for **every** transport (mock today, REST tonight):
+## Safety: it never touches Adam's Deck
 
-- never write a note that carries a `deck`/`deck/*` tag,
-- never add a deck tag to any note,
-- never write a Deck-owned metadata key (the Cockpit nests everything under `cockpit`),
-- never query the deck namespace.
+Both apps share one vault. A firewall in the vault layer (`src/lib/vault/guard.ts`)
+guarantees the Cockpit never writes a `deck`/`deck/*` note or any Deck-owned
+metadata key. Proven by `npm test`.
 
-The factory wraps the inner client in this firewall, so even a frontend bug can't
-reach Deck. Proven by [`guard.test.ts`](src/lib/vault/guard.test.ts) — `npm test`.
-
-## Run it
+## Develop
 
 ```bash
-cd cockpit
 npm install
 npm run dev      # http://localhost:5173
+npm run build    # typecheck + bundle
+npm test         # firewall + unit tests
 ```
 
-`npm run build` typechecks + bundles. `npm run typecheck` is types-only.
+Pushes to `main` auto-build and deploy to GitHub Pages via
+`.github/workflows/deploy.yml`.
 
-## What works now
+## How it connects
 
-- **Home** — project tiles for your real Jonathan / Amanda / Parachute projects:
-  title, phase, computed open-task count, domain tags. **Drag a card to
-  reprioritize** (persists `order` to the mock).
-- **Canvas** — click a tile to enter a dark dot-grid surface. Notes appear as
-  blocks with a **colored left edge by type** (note=blue, todo=green,
-  scratchpad=amber, text=grey). **Drag blocks** (snaps to grid, persists
-  position); **drag empty space to pan**.
-- **Expand → paper** — double-click a block to open it full-screen as white
-  paper. Read-only for now.
-
-## The one idea that makes tonight easy
-
-Every screen talks to a single interface — [`VaultClient`](src/lib/vault/VaultClient.ts) —
-and nothing else. Today the implementation is
-[`MockVaultClient`](src/lib/vault/MockVaultClient.ts), seeded from
-[real notes](src/lib/vault/seed.ts) pulled out of the vault via MCP. Its methods
-mirror the Parachute surface (`query-notes` / `create-note` / `update-note`),
-including metadata-merge and optimistic concurrency (`if_updated_at`).
-
-**To go live:** implement `RestVaultClient` (same interface, hitting the BFF) and
-return it from [`createVaultClient()`](src/lib/vault/index.ts) when
-`VITE_COCKPIT_API` is set. Nothing upstream changes.
-
-## Architecture
-
-```
-src/
-  lib/
-    model/      types + pure mappers (note → Project / Block, subtask parsing)
-    vault/      VaultClient interface · MockVaultClient · seed · factory
-    canvas/     grid geometry (snap)
-    markdown.tsx  tiny read-only markdown renderer
-  state/        zustand store (load, reorder, move, expand)
-  features/
-    home/       HomeScreen · ProjectTile
-    canvas/     CanvasView · BlockCard · PaperOverlay
-```
-
-## Data model (as seeded, matching the real vault)
-
-- **Project** = a `project`-tagged note at `projects/<slug>`, with
-  `metadata.cockpit = { slug, phase, order, domains }` and a `deep` pointer to
-  its full status note. (Your real notes already use the `deep` pointer.)
-- **Block** = a note tagged by type (`note`/`todo`/`scratchpad`/`text`) **and**
-  `project/<slug>`, carrying `metadata.cockpit = { x, y, w, h, z }`.
-- **Open-task count** is computed from unchecked `- [ ]` lines in todo blocks —
-  not stored.
-
-## Next slices
-
-3. Paper view: inline editing → write-back with `if_updated_at`.
-4. Add-block (+), scratchpad → write-to-vault (AI-compress + approve), todo
-   subtask reorder/checkoff.
-
-## Bring tonight
-
-- Hub origin + a scoped token (or how the existing Parachute UI authenticates).
-- Anthropic key for scratchpad compression (routed through the BFF).
-- The React prototype (visual identity).
+Browser OAuth 2.1 + PKCE straight to the vault's REST API (plumbing reused from
+Adam's Deck). The token lives only in your browser's `localStorage` and is sent
+only to your vault. Everything the UI does goes through one `VaultClient`
+interface, so the transport stays swappable.

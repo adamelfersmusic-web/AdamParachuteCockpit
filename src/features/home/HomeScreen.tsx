@@ -19,7 +19,7 @@ export function HomeScreen() {
           <h1>Adam's Cockpit</h1>
           <p className="subtitle">Active projects · drag a card to reprioritize</p>
         </div>
-        <span className="badge">mock vault · {projects.length} projects</span>
+        <span className="badge">{projects.length} active projects</span>
       </header>
 
       {loading && <div className="muted">Loading from vault…</div>}

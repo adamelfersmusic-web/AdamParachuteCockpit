@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import type { Block, Project } from "../lib/model/types";
 import { buildBlock, buildProject, slugOf } from "../lib/model/mappers";
+import { deriveProjectBlocks } from "../lib/model/derive";
 import type { VaultClient } from "../lib/vault";
 
 type View = { screen: "home" } | { screen: "canvas"; slug: string };
@@ -46,7 +47,12 @@ export const useCockpit = create<CockpitState>()((set, get) => ({
       const projects: Project[] = [];
       for (const pn of projectNotes) {
         const slug = slugOf(pn);
-        const blockNotes = await client.getBlocks(slug);
+        let blockNotes = await client.getBlocks(slug);
+        // Live vault with nothing placed on this canvas yet → derive a starter
+        // board from the project's real notes (wall + deep-note sections).
+        if (blockNotes.length === 0) {
+          blockNotes = await deriveProjectBlocks(client, pn);
+        }
         const built = blockNotes.map(buildBlock).sort((a, b) => a.z - b.z);
         blocks[slug] = built;
         projects.push(buildProject(pn, built));
