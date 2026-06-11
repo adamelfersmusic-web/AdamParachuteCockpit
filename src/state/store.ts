@@ -2,6 +2,7 @@ import { create } from "zustand";
 import type { Block, Project } from "../lib/model/types";
 import { buildBlock, buildProject, slugOf } from "../lib/model/mappers";
 import { deriveProjectBlocks } from "../lib/model/derive";
+import { loadLayout, patchLayout } from "../lib/layout";
 import type { VaultClient } from "../lib/vault";
 
 type View = { screen: "home" } | { screen: "canvas"; slug: string };
@@ -22,6 +23,7 @@ interface CockpitState {
   goHome: () => void;
   reorderProjects: (from: number, to: number) => Promise<void>;
   moveBlock: (slug: string, id: string, x: number, y: number) => Promise<void>;
+  toggleCollapse: (slug: string, id: string) => void;
   expandBlock: (id?: string) => void;
 }
 
@@ -53,7 +55,16 @@ export const useCockpit = create<CockpitState>()((set, get) => ({
         if (blockNotes.length === 0) {
           blockNotes = await deriveProjectBlocks(client, pn);
         }
-        const built = blockNotes.map(buildBlock).sort((a, b) => a.z - b.z);
+        const layout = loadLayout(slug);
+        const built = blockNotes
+          .map(buildBlock)
+          .map((b) => ({
+            ...b,
+            collapsed: layout[b.id]?.collapsed ?? b.collapsed,
+            x: layout[b.id]?.x ?? b.x,
+            y: layout[b.id]?.y ?? b.y,
+          }))
+          .sort((a, b) => a.z - b.z);
         blocks[slug] = built;
         projects.push(buildProject(pn, built));
       }
@@ -67,6 +78,22 @@ export const useCockpit = create<CockpitState>()((set, get) => ({
   openProject: (slug) => set({ view: { screen: "canvas", slug }, expandedBlockId: undefined }),
   goHome: () => set({ view: { screen: "home" }, expandedBlockId: undefined }),
   expandBlock: (id) => set({ expandedBlockId: id }),
+
+  // Collapse/expand a block to declutter; the choice persists per project.
+  toggleCollapse: (slug, id) => {
+    let next = false;
+    set((s) => ({
+      blocks: {
+        ...s.blocks,
+        [slug]: (s.blocks[slug] ?? []).map((b) => {
+          if (b.id !== id) return b;
+          next = !b.collapsed;
+          return { ...b, collapsed: next };
+        }),
+      },
+    }));
+    patchLayout(slug, id, { collapsed: next });
+  },
 
   // Drag-to-reorder priority. Optimistic locally, then persist each moved tile's
   // order (full cockpit object, since metadata merges key-by-key).
@@ -103,6 +130,9 @@ export const useCockpit = create<CockpitState>()((set, get) => ({
         [slug]: (s.blocks[slug] ?? []).map((b) => (b.id === id ? { ...b, x, y } : b)),
       },
     }));
+    // Persist the position locally so the arrangement survives reloads even for
+    // derived blocks (which have no vault home).
+    patchLayout(slug, id, { x, y });
     const { client } = get();
     if (!client) return;
     try {

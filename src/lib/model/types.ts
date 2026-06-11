@@ -69,4 +69,5 @@ export interface Block {
   w: number;
   h: number;
   z: number;
+  collapsed: boolean;
 }

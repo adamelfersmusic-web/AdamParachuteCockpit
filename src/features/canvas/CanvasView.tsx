@@ -14,6 +14,7 @@ export function CanvasView({ slug }: { slug: string }) {
   const blocks = useCockpit((s) => s.blocks[slug] ?? EMPTY);
   const goHome = useCockpit((s) => s.goHome);
   const moveBlock = useCockpit((s) => s.moveBlock);
+  const toggleCollapse = useCockpit((s) => s.toggleCollapse);
   const expandBlock = useCockpit((s) => s.expandBlock);
   const expandedId = useCockpit((s) => s.expandedBlockId);
   const expanded = blocks.find((b) => b.id === expandedId);
@@ -73,6 +74,7 @@ export function CanvasView({ slug }: { slug: string }) {
               block={b}
               onMove={(x, y) => void moveBlock(slug, b.id, x, y)}
               onExpand={() => expandBlock(b.id)}
+              onToggleCollapse={() => toggleCollapse(slug, b.id)}
             />
           ))}
           <ScratchpadBlock

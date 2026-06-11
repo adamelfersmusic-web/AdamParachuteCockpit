@@ -76,6 +76,7 @@ export function buildBlock(note: VaultNote): Block {
     w: c.w ?? 320,
     h: c.h ?? 200,
     z: c.z ?? 1,
+    collapsed: false,
   };
 }
 
