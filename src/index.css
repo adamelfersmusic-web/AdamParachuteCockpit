@@ -243,3 +243,58 @@ h1, h2, h3 { margin: 0; }
   border-top: 1px solid var(--border); padding-top: 12px;
 }
 .approve-link { color: var(--accent); }
+
+/* ===== Scratchpad (on-canvas, editable) ===== */
+.block.scratch {
+  padding: 0; cursor: default; display: flex; flex-direction: column; overflow: hidden;
+}
+.scratch-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 8px 12px; cursor: grab; border-bottom: 1px solid var(--border); flex: 0 0 auto;
+}
+.scratch-head:active { cursor: grabbing; }
+.scratch-expand {
+  background: transparent; border: none; color: var(--muted);
+  font-size: 14px; line-height: 1; cursor: pointer; padding: 2px 4px;
+}
+.scratch-expand:hover { color: var(--text); }
+.scratch-area {
+  flex: 1; min-height: 0; resize: none; border: none; outline: none;
+  background: transparent; color: var(--text);
+  font: 13px/1.5 ui-sans-serif, system-ui, sans-serif; padding: 10px 12px;
+  user-select: text; -webkit-user-select: text; touch-action: auto;
+}
+.scratch-area::placeholder { color: var(--muted); }
+.scratch-resize {
+  position: absolute; right: 0; bottom: 0; width: 18px; height: 18px;
+  cursor: nwse-resize; touch-action: none;
+}
+.scratch-resize::after {
+  content: ""; position: absolute; right: 4px; bottom: 4px; width: 8px; height: 8px;
+  border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted); opacity: 0.6;
+}
+.scratch-resize:hover::after { opacity: 1; }
+
+/* ===== Scratchpad full-screen ===== */
+.scratch-full {
+  position: fixed; inset: 0; z-index: 60; background: var(--bg);
+  display: flex; flex-direction: column; animation: fade 0.12s ease;
+}
+.scratch-full-bar {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 22px; border-bottom: 1px solid var(--border);
+}
+.scratch-full-title { font-size: 14px; font-weight: 600; }
+.scratch-full-hint { color: var(--muted); font-size: 12px; }
+.scratch-full-done {
+  margin-left: auto; background: var(--surface); border: 1px solid var(--border);
+  border-radius: 8px; padding: 6px 12px; color: var(--text); font-size: 13px; cursor: pointer;
+}
+.scratch-full-done:hover { border-color: #2f3a47; }
+.scratch-full-area {
+  flex: 1; min-height: 0; resize: none; border: none; outline: none;
+  background: transparent; color: var(--text);
+  font: 16px/1.7 ui-sans-serif, system-ui, sans-serif;
+  padding: 28px clamp(20px, 12vw, 240px);
+}
+.scratch-full-area::placeholder { color: var(--muted); }

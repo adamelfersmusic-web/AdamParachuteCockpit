@@ -1,8 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Block } from "../../lib/model/types";
 import { useCockpit } from "../../state/store";
 import { BlockCard } from "./BlockCard";
 import { PaperOverlay } from "./PaperOverlay";
+import { ScratchpadBlock } from "./ScratchpadBlock";
+import { ScratchpadOverlay } from "./ScratchpadOverlay";
+import { loadScratch, saveScratch, type ScratchState } from "../../lib/scratch";
 
 const EMPTY: Block[] = [];
 
@@ -17,6 +20,20 @@ export function CanvasView({ slug }: { slug: string }) {
 
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const panRef = useRef<{ sx: number; sy: number; ox: number; oy: number } | null>(null);
+
+  // Per-project scratchpad — content/size/position persisted in localStorage so
+  // it always picks up where you left off.
+  const [scratch, setScratch] = useState<ScratchState>(() => loadScratch(slug));
+  const [scratchFull, setScratchFull] = useState(false);
+  useEffect(() => {
+    setScratch(loadScratch(slug));
+    setScratchFull(false);
+    setPan({ x: 0, y: 0 });
+  }, [slug]);
+  useEffect(() => {
+    const t = setTimeout(() => saveScratch(slug, scratch), 350);
+    return () => clearTimeout(t);
+  }, [slug, scratch]);
 
   return (
     <div className="canvas-screen">
@@ -58,10 +75,22 @@ export function CanvasView({ slug }: { slug: string }) {
               onExpand={() => expandBlock(b.id)}
             />
           ))}
+          <ScratchpadBlock
+            state={scratch}
+            onChange={setScratch}
+            onExpand={() => setScratchFull(true)}
+          />
         </div>
       </div>
 
       {expanded && <PaperOverlay block={expanded} onClose={() => expandBlock(undefined)} />}
+      {scratchFull && (
+        <ScratchpadOverlay
+          content={scratch.content}
+          onChange={(content) => setScratch((s) => ({ ...s, content }))}
+          onClose={() => setScratchFull(false)}
+        />
+      )}
     </div>
   );
 }
