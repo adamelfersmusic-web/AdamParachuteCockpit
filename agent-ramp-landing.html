@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="dark" />
+<title>The First 90-Day Agent Ramp System</title>
+<meta name="description" content="We shorten the time it takes your new agents to make their first sale. A call film room for your first-90-day agents — see exactly where the call breaks, what to coach, and which agents are earning their leads." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:#0E1216;
+    --bg-2:#11171D;
+    --surface:#161D24;
+    --surface-2:#1E2831;
+    --line:#283139;
+    --line-2:#37424D;
+    --cream:#FAF7F2;
+    --cream-2:#C7C3BA;
+    --cream-3:#8C897F;
+    --gold:#C4923A;
+    --gold-bright:#E2B669;
+    --steel:#6E9AC9;
+    --navy-deep:#13243A;
+    --good:#6FA877;
+    --warn:#CF9B45;
+    --stuck:#C16E5C;
+    --maxw:1080px;
+    --r:14px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  /* ---- type ---- */
+  .display{font-family:'Spectral',Georgia,serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+  .eyebrow{
+    font-family:'IBM Plex Mono',ui-monospace,monospace;
+    font-size:12px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
+    color:var(--gold);
+  }
+  .mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+  .lede{color:var(--cream-2);font-size:1.12rem}
+  .dim{color:var(--cream-2)}
+  .gold{color:var(--gold)}
+
+  a{color:var(--steel);text-decoration:none}
+  a:hover{color:var(--gold-bright)}
+
+  /* ---- header ---- */
+  header.site{
+    position:sticky;top:0;z-index:50;
+    background:rgba(14,18,22,0.82);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .site .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+  .mark{display:flex;align-items:center;gap:11px;color:var(--cream)}
+  .mark svg{flex-shrink:0}
+  .mark .name{font-family:'Spectral',serif;font-weight:600;font-size:16px;letter-spacing:.01em}
+  .mark .tbd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--cream-3);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:4px;padding:2px 6px;margin-left:2px}
+  .nav-cta{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.04em;
+    color:var(--bg);background:var(--gold);
+    padding:9px 15px;border-radius:8px;white-space:nowrap;
+    transition:background .18s ease, transform .18s ease;
+  }
+  .nav-cta:hover{background:var(--gold-bright);color:var(--bg);transform:translateY(-1px)}
+
+  /* ---- buttons ---- */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    font-family:'IBM Plex Mono',monospace;font-size:13.5px;font-weight:500;letter-spacing:.03em;
+    padding:14px 22px;border-radius:9px;cursor:pointer;border:1px solid transparent;
+    transition:all .18s ease;
+  }
+  .btn-primary{background:var(--gold);color:var(--bg)}
+  .btn-primary:hover{background:var(--gold-bright);color:var(--bg);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--cream);border-color:var(--line-2)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+  /* ---- sections ---- */
+  section{padding:96px 0;border-top:1px solid var(--line);scroll-margin-top:74px}
+  section:first-of-type{border-top:none}
+  .sec-head{max-width:760px;margin-bottom:44px}
+  .sec-head .eyebrow{display:block;margin-bottom:16px}
+  h2.display{font-size:clamp(1.9rem,4.2vw,3rem)}
+  h3.display{font-size:clamp(1.4rem,2.6vw,1.85rem)}
+  p+p{margin-top:18px}
+
+  /* ---- hero ---- */
+  .hero{padding:84px 0 92px;border-top:none;position:relative;overflow:hidden}
+  .hero .wrap{position:relative;z-index:2}
+  .hero h1{font-size:clamp(2.5rem,6.4vw,4.6rem);max-width:15ch;margin:20px 0 0}
+  .hero .promise{font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream);max-width:30ch;margin-top:26px;font-weight:500}
+  .hero .turn{color:var(--gold-bright);font-family:'Spectral',serif;font-style:italic;font-weight:500}
+  .hero .sub{max-width:54ch;margin-top:22px;color:var(--cream-2)}
+  .hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
+  /* ambient waveform behind hero */
+  .hero-wave{position:absolute;left:0;right:0;bottom:0;height:240px;z-index:1;opacity:.5;pointer-events:none}
+  .hero-wave svg{width:100%;height:100%;display:block}
+
+  /* ---- problem / wishing well ---- */
+  .pull{
+    font-family:'Spectral',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.4rem,3.2vw,2.1rem);line-height:1.25;color:var(--cream);
+    border-left:2px solid var(--gold);padding-left:24px;margin:8px 0 0;max-width:24ch;
+  }
+  .two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:start}
+  @media(max-width:760px){.two-col{grid-template-columns:1fr;gap:28px}}
+
+  /* ---- film room / signature ---- */
+  .filmroom{background:var(--bg-2)}
+  .player{
+    background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line-2);border-radius:var(--r);
+    padding:26px 26px 22px;margin-top:8px;
+    box-shadow:0 24px 60px -30px rgba(0,0,0,.8);
+  }
+  .player .topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+  .player .file{display:flex;align-items:center;gap:12px;min-width:0}
+  .player .file .ic{width:38px;height:38px;border-radius:9px;background:rgba(196,146,58,.12);border:1px solid rgba(196,146,58,.35);display:grid;place-items:center;color:var(--gold);flex-shrink:0}
+  .player .file .meta{min-width:0}
+  .player .file .fname{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .player .file .fsub{font-size:12px;color:var(--cream-3);margin-top:2px}
+  .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;padding:5px 10px;border-radius:20px;border:1px solid var(--line-2);color:var(--cream-2);white-space:nowrap}
+  .tag.break{color:var(--gold-bright);border-color:rgba(226,182,105,.4);background:rgba(196,146,58,.08)}
+
+  .wavebox{position:relative;display:flex;align-items:center;gap:14px}
+  .play{
+    width:48px;height:48px;border-radius:50%;flex-shrink:0;cursor:pointer;
+    background:var(--gold);color:var(--bg);border:none;display:grid;place-items:center;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .play:hover{background:var(--gold-bright);transform:scale(1.05)}
+  .play:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+  .wave{position:relative;flex:1;height:64px}
+  .wave svg{width:100%;height:100%;display:block;overflow:visible}
+  .window-label{
+    position:absolute;top:-9px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;
+    color:var(--gold-bright);text-transform:uppercase;
+  }
+  .playhead{position:absolute;top:0;bottom:0;width:2px;background:var(--cream);opacity:0;box-shadow:0 0 8px rgba(250,247,242,.7)}
+  .timerow{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3);margin-top:9px}
+
+  .ear{
+    margin-top:22px;border-top:1px dashed var(--line-2);padding-top:20px;
+    display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+  }
+  .ear .avatar{width:40px;height:40px;border-radius:50%;background:var(--navy-deep);border:1px solid var(--line-2);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);flex-shrink:0}
+  .ear .who{font-size:13px;color:var(--cream-3);margin-bottom:6px}
+  .ear .who b{color:var(--cream-2);font-weight:600}
+  .ear .quote{font-family:'Spectral',serif;font-size:1.08rem;line-height:1.5;color:var(--cream)}
+  .ear .drill{margin-top:12px;font-size:14px;color:var(--cream-2)}
+  .ear .drill .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-right:8px}
+  .transcript{margin-top:16px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:14.5px;line-height:1.6;color:var(--cream-2)}
+  .transcript .spk{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3);letter-spacing:.04em}
+  .transcript .hl{color:var(--gold-bright);background:rgba(196,146,58,.1);padding:0 3px;border-radius:3px}
+
+  /* ---- two questions ---- */
+  .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
+  @media(max-width:680px){.q-grid{grid-template-columns:1fr}}
+  .qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px}
+  .qcard .num{font-family:'Spectral',serif;font-size:2.6rem;color:var(--gold);line-height:1;font-weight:600}
+  .qcard h4{font-size:1.2rem;margin:14px 0 10px;font-weight:600}
+  .qcard p{font-size:15px;color:var(--cream-2)}
+
+  /* ---- stop / get ---- */
+  .stoplist{list-style:none;display:grid;gap:14px;margin-top:4px}
+  .stoplist li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:var(--cream-2)}
+  .stoplist li::before{content:"";width:20px;height:20px;border-radius:5px;flex-shrink:0;margin-top:2px;background:rgba(193,110,92,.14);border:1px solid rgba(193,110,92,.45);
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C16E5C' stroke-width='2.4' stroke-linecap='round'><path d='M6 6l12 12M18 6L6 18'/></svg>");
+    background-repeat:no-repeat;background-position:center;background-size:13px}
+
+  /* ---- reports ---- */
+  .reports{background:var(--bg-2)}
+  .report-block{margin-top:64px}
+  .report-block:first-of-type{margin-top:8px}
+  .rb-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:8px}
+  .rb-head .kicker{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.14em;text-transform:uppercase}
+  .rb-sub{color:var(--cream-2);max-width:62ch;margin-bottom:26px}
+
+  .sample-strip{display:flex;align-items:center;gap:12px;margin:0 0 16px}
+  .sample-strip .pip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream-3)}
+  .sample-strip .rule{flex:1;height:1px;background:var(--line)}
+
+  /* short sample card */
+  .doc{
+    background:var(--surface);border:1px solid var(--line-2);border-radius:var(--r);
+    overflow:hidden;
+  }
+  .doc.full{box-shadow:0 30px 70px -40px rgba(0,0,0,.9)}
+  .doc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 22px;background:var(--surface-2);border-bottom:1px solid var(--line)}
+  .doc-top .dt{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream-2);letter-spacing:.04em}
+  .doc-top .dt b{color:var(--cream)}
+  .doc-top .stamp{font-family:'IBM Plex Mono',monospace;font-size:10.5px;color:var(--cream-3);letter-spacing:.08em;text-transform:uppercase}
+  .doc-body{padding:22px}
+
+  .sample .doc-body{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center}
+  @media(max-width:680px){.sample .doc-body{grid-template-columns:1fr;gap:14px}}
+  .agentchip{display:flex;align-items:center;gap:11px}
+  .agentchip .ph{width:42px;height:42px;border-radius:50%;background:var(--navy-deep);border:1px solid var(--line-2);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;color:var(--steel);font-size:14px}
+  .agentchip .an{font-weight:600;font-size:15px}
+  .agentchip .ad{font-size:12px;color:var(--cream-3);font-family:'IBM Plex Mono',monospace}
+  .leakline{font-size:15px;color:var(--cream-2)}
+  .leakline b{color:var(--cream)}
+  .fixflag{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;padding:7px 12px;border-radius:20px;white-space:nowrap}
+  .fixflag.yes{color:var(--good);border:1px solid rgba(111,168,119,.45);background:rgba(111,168,119,.1)}
+  .fixflag.no{color:var(--stuck);border:1px solid rgba(193,110,92,.45);background:rgba(193,110,92,.1)}
+
+  /* full report internals */
+  .scoreboard{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:24px}
+  @media(max-width:560px){.scoreboard{grid-template-columns:repeat(2,1fr)}}
+  .stat{background:var(--surface);padding:16px 16px}
+  .stat .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-3)}
+  .stat .v{font-family:'Spectral',serif;font-size:1.7rem;font-weight:600;color:var(--cream);margin-top:5px;line-height:1}
+  .stat .d{font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:5px}
+  .stat .d.up{color:var(--good)}
+  .stat .d.down{color:var(--stuck)}
+  .stat .d.flat{color:var(--cream-3)}
+
+  .field{padding:16px 0;border-top:1px solid var(--line)}
+  .field:first-child{border-top:none;padding-top:0}
+  .field .fl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
+  .field .fv{font-size:15.5px;color:var(--cream)}
+  .field .fv .small{color:var(--cream-2);font-size:14.5px}
+  .miss{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright);border:1px solid rgba(226,182,105,.35);background:rgba(196,146,58,.08);padding:3px 9px;border-radius:6px;margin:0 2px}
+
+  /* macro report */
+  .roster{display:grid;gap:10px}
+  .rrow{display:grid;grid-template-columns:1.4fr 1fr auto;gap:14px;align-items:center;padding:13px 16px;background:var(--surface-2);border:1px solid var(--line);border-radius:10px}
+  @media(max-width:560px){.rrow{grid-template-columns:1fr auto}.rrow .rcoach{display:none}}
+  .rrow .rname{font-weight:600;font-size:15px}
+  .rrow .rname .rid{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3);display:block;margin-top:1px}
+  .rrow .rcoach{font-size:13.5px;color:var(--cream-2)}
+  .pill{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 12px;border-radius:20px;white-space:nowrap;text-align:center}
+  .pill.improving{color:var(--good);border:1px solid rgba(111,168,119,.45);background:rgba(111,168,119,.1)}
+  .pill.coachable{color:var(--warn);border:1px solid rgba(207,155,69,.45);background:rgba(207,155,69,.1)}
+  .pill.stuck{color:var(--stuck);border:1px solid rgba(193,110,92,.45);background:rgba(193,110,92,.1)}
+
+  .ttfs{margin-top:24px;padding-top:22px;border-top:1px solid var(--line)}
+  .ttfs .fl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .ttfs-chart{display:flex;align-items:flex-end;gap:10px;height:120px;padding-top:6px}
+  .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;height:100%}
+  .bar .col{width:100%;max-width:54px;background:linear-gradient(180deg,var(--gold),#7d5e26);border-radius:6px 6px 0 0;position:relative}
+  .bar .col .n{position:absolute;top:-22px;left:0;right:0;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream)}
+  .bar .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3)}
+  .bar.now .col{background:linear-gradient(180deg,var(--gold-bright),var(--gold))}
+  .lead-note{margin-top:22px;padding-top:20px;border-top:1px solid var(--line);font-size:15px;color:var(--cream-2)}
+  .lead-note b{color:var(--cream)}
+
+  /* ---- lead spend ---- */
+  .insurance-line{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,1.8rem);color:var(--cream);max-width:22ch}
+
+  /* ---- visibility honesty ---- */
+  .visibility{background:var(--bg-2)}
+  .honest{max-width:62ch}
+  .honest p{font-size:1.05rem}
+
+  /* ---- 7 days ---- */
+  .steps{counter-reset:step;display:grid;gap:0;margin-top:8px;max-width:760px}
+  .step{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:20px 0;border-top:1px solid var(--line);align-items:start}
+  .step:first-child{border-top:none}
+  .step .si{counter-increment:step;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold);padding-top:3px}
+  .step .si::before{content:"0" counter(step)}
+  .step .st{font-size:16px;color:var(--cream)}
+
+  /* ---- final cta ---- */
+  .finalcta{text-align:center;background:radial-gradient(120% 120% at 50% 0%,rgba(196,146,58,.08),transparent 60%)}
+  .finalcta h2{margin:0 auto;max-width:16ch}
+  .finalcta p{max-width:56ch;margin:22px auto 0;color:var(--cream-2)}
+  .finalcta .cta-row{justify-content:center;margin-top:36px;display:flex;flex-wrap:wrap;gap:14px}
+
+  /* ---- offer footer ---- */
+  .offer{border-top:1px solid var(--line-2);background:var(--surface)}
+  .offer .wrap{padding-top:60px;padding-bottom:60px}
+  .offer .price{font-family:'Spectral',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--gold)}
+  .offer .price span{font-size:1.1rem;color:var(--cream-2);font-family:'Inter',sans-serif;font-weight:500}
+  .offer .anchor{color:var(--cream-2);margin-top:8px}
+  .offer .includes{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;max-width:760px}
+  .offer .inc{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--cream-2);border:1px solid var(--line-2);border-radius:20px;padding:7px 13px}
+  .offer .built{margin-top:26px;color:var(--cream-3);font-size:14px}
+
+  footer.legal{border-top:1px solid var(--line);padding:30px 0}
+  footer.legal .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center}
+  footer.legal .small{font-size:12.5px;color:var(--cream-3);font-family:'IBM Plex Mono',monospace}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="site">
+  <div class="wrap">
+    <div class="mark" aria-label="The 90-Day Agent Ramp System">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <rect x="4" y="20" width="5" height="8" rx="1.5" fill="#C4923A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.5" fill="#C4923A"/>
+        <rect x="23" y="5" width="5" height="23" rx="1.5" fill="#E2B669"/>
+      </svg>
+      <span class="name">The 90-Day Ramp System</span>
+    </div>
+    <a href="#start" class="nav-cta">Analyze My First 10 Calls</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Agent Ramp Intelligence · For agency owners</span>
+    <h1 class="display">We shorten the time it takes your new agents to make their first sale.</h1>
+    <p class="promise">Turn a six-hour one-on-one into a <span class="turn">six-minute read.</span></p>
+    <p class="sub">Stop guessing which agents are building your agency — and which are quietly burning your lead spend. We show you where calls break down, what to coach next, and which agents are earning more of your leads.</p>
+    <div class="cta-row">
+      <a href="#start" class="btn btn-primary">Analyze My First 10 Calls →</a>
+      <a href="#reports" class="btn btn-ghost">See a Sample Report</a>
+    </div>
+  </div>
+  <div class="hero-wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
+      <path id="hw" fill="none" stroke="#C4923A" stroke-width="1.4" opacity="0.55"/>
+      <path id="hw2" fill="none" stroke="#6E9AC9" stroke-width="1" opacity="0.25"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ============ THE $1,500 ROOKIE GAMBLE ============ -->
+<section class="problem">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">The $1,500 rookie gamble</span>
+      <p class="lede" style="margin-top:18px">Every time you hand a premium batch of leads to a new agent you can't see, you're running an expensive experiment — and you don't find out the result until the money's already gone.</p>
+      <p class="dim">You could catch exactly where they're losing the sale if you had time to listen to every call. You don't. So the audio sits in a folder, the rookie gives you a vague excuse when the deal dies, and you end up paying for broad, generic training when what they needed was one specific fix.</p>
+    </div>
+    <div>
+      <p class="pull">It's not a training program. It's a wishing well.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CALL FILM ROOM (SIGNATURE) ============ -->
+<section class="filmroom" id="filmroom">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A call film room for your new agents</span>
+      <h2 class="display">They don't re-watch the whole season. They review the tape.</h2>
+      <p class="lede" style="margin-top:18px">Elite teams find the exact play where the game turned and coach that one thing. So do we: review every new-agent call against your framework, isolate the moment the sale broke, and hand your trainer the one drill to fix it — then check next week whether it stuck.</p>
+      <p class="dim">An athletic coach, not a compliance cop. It doesn't replace your trainer or your bootcamp. It makes them work.</p>
+    </div>
+
+    <!-- the signature: recorded call with the 30-second window -->
+    <div class="player reveal" role="group" aria-label="Sample reviewed call">
+      <div class="topline">
+        <div class="file">
+          <div class="ic" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8"/></svg>
+          </div>
+          <div class="meta">
+            <div class="fname">call_0617_sandoval-r_inbound.m4a</div>
+            <div class="fsub">New-agent call · reviewed against your framework</div>
+          </div>
+        </div>
+        <span class="tag break">⚑ Sale broke at the banking ask</span>
+      </div>
+
+      <div class="wavebox">
+        <button class="play" id="playBtn" aria-label="Play the reviewed 30 seconds">
+          <svg id="playIcon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="wave">
+          <span class="window-label" id="winLabel" style="left:62%">the 30 seconds →</span>
+          <svg viewBox="0 0 600 64" preserveAspectRatio="none" id="waveSvg" aria-hidden="true">
+            <!-- highlighted window backdrop -->
+            <rect id="winRect" x="372" y="0" width="120" height="64" fill="rgba(196,146,58,0.12)" rx="3"/>
+          </svg>
+          <div class="playhead" id="playhead" style="left:62%"></div>
+        </div>
+      </div>
+      <div class="timerow"><span>00:00</span><span class="gold mono" id="winTime">14:32 – 15:01 · the turn</span><span>21:14</span></div>
+
+      <div class="transcript">
+        <span class="spk">[14:36] AGENT — Ray Sandoval</span><br/>
+        "…so yeah, um, no rush at all — whenever you feel comfortable we could maybe <span class="hl">look at getting the bank details</span>, but totally up to you, no pressure, we can always circle back another time if that's easier…"
+      </div>
+
+      <div class="ear">
+        <div class="avatar" aria-hidden="true"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5a9 9 0 0 1 18 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3"/></svg></div>
+        <div>
+          <div class="who">A human ear on the moment — <b>a senior closer</b>, on the exact 30 seconds:</div>
+          <p class="quote">"He apologized for asking. Three hedges before the banking ask and an exit ramp on the end of it — he handed her permission to stall. The words were fine. The delivery gave the sale away."</p>
+          <div class="drill"><span class="lab">Drill this week</span>The assumptive banking ask: state it once, plainly, then stop talking. No "no rush," no escape hatch.</div>
+        </div>
+      </div>
+    </div>
+    <p class="dim" style="margin-top:18px;font-size:14px">The right 30 seconds — not hours of tape. We isolate the moment a real closer needs to hear, and name what your agent couldn't hear themselves.</p>
+  </div>
+</section>
+
+<!-- ============ TWO QUESTIONS ============ -->
+<section class="questions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Two questions. Everything falls out of them.</span>
+      <h2 class="display">Your scoreboard tells you an agent is struggling. It never tells you why.</h2>
+    </div>
+    <div class="q-grid">
+      <div class="qcard reveal">
+        <div class="num">1</div>
+        <h4>Are your new agents following the framework?</h4>
+        <p>Intro, discovery, the social ask, the banking ask, the pre-close, the close. We read for the meaning of each milestone — full credit when an agent makes the move in their own words, flagged only when the move is actually missing.</p>
+      </div>
+      <div class="qcard reveal">
+        <div class="num">2</div>
+        <h4>Are they fixing what you tell them to fix?</h4>
+        <p>One coaching priority a week — not twelve, one. The next week, we check whether it actually changed. That's the difference between training and development.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT YOU STOP DOING ============ -->
+<section class="stop">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">What you stop doing</span>
+      <ul class="stoplist" style="margin-top:22px">
+        <li>Listening to rookies tell long stories about calls they can't actually explain.</li>
+        <li>Letting your trainers burn hours hunting for the problem.</li>
+        <li>Handing leads to agents who aren't ready and hoping it works out.</li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow">What you get instead, every week</span>
+      <p class="dim" style="margin-top:22px">A per-agent <b class="gold">New Agent Ramp Report</b> in plain English, a human ear on the 30 seconds that mattered, and a monthly read for you — who's improving, who's coachable, who's stuck, by name.</p>
+      <p class="dim"><a href="#reports">See exactly what those reports look like ↓</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REPORTS (THE EMBED) ============ -->
+<section class="reports" id="reports">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The reports</span>
+      <h2 class="display">No ten-page report nobody reads.</h2>
+      <p class="lede" style="margin-top:18px">Two deliverables. A weekly per-agent read your team leader can act on Monday morning, and a monthly team-level read built for you. Here's the quick glance — and the whole thing.</p>
+    </div>
+
+    <!-- ===== REPORT 1: NEW AGENT RAMP REPORT ===== -->
+    <div class="report-block">
+      <div class="rb-head">
+        <span class="kicker">Report 01 — weekly, per agent</span>
+        <h3 class="display">The New Agent Ramp Report</h3>
+      </div>
+      <p class="rb-sub">Their numbers, the one place they keep losing the sale, whether they fixed last week's miss, and the single thing to drill this week — plus the exact call moment worth reviewing together.</p>
+
+      <!-- short sample -->
+      <div class="sample-strip"><span class="pip">At a glance</span><span class="rule"></span></div>
+      <div class="doc sample reveal">
+        <div class="doc-top"><span class="dt"><b>Ray Sandoval</b> · week of Jun 16</span><span class="stamp">sample</span></div>
+        <div class="doc-body">
+          <div class="agentchip">
+            <div class="ph" aria-hidden="true">RS</div>
+            <div><div class="an">Ray Sandoval</div><div class="ad">agent · wk 3</div></div>
+          </div>
+          <div class="leakline">Dominant leak: <b>hedged banking ask</b> — loses control right before the close.</div>
+          <div class="fixflag no">↻ last week's fix: not yet</div>
+        </div>
+      </div>
+
+      <!-- full -->
+      <div class="sample-strip" style="margin-top:26px"><span class="pip">The whole report</span><span class="rule"></span></div>
+      <div class="doc full reveal">
+        <div class="doc-top"><span class="dt"><b>New Agent Ramp Report</b> — Ray Sandoval · week of Jun 16, 2026</span><span class="stamp">12 calls reviewed</span></div>
+        <div class="doc-body">
+          <div class="scoreboard">
+            <div class="stat"><div class="k">Show rate</div><div class="v">61%</div><div class="d up">▲ from 54%</div></div>
+            <div class="stat"><div class="k">Close rate</div><div class="v">19%</div><div class="d flat">flat</div></div>
+            <div class="stat"><div class="k">Avg AP</div><div class="v">$842</div><div class="d up">▲ from $790</div></div>
+            <div class="stat"><div class="k">Appts set</div><div class="v">9</div><div class="d up">▲ from 6</div></div>
+          </div>
+
+          <div class="field">
+            <div class="fl">Where the call breaks</div>
+            <div class="fv">The conversation holds through <span class="miss">discovery</span> and <span class="miss">social ask</span>, then loses control at the <span class="miss">banking ask</span>. Pattern across 7 of 12 calls: a <span class="small">delivery miss</span>, not a framework miss — he reaches the beat, but hedges it away.</div>
+          </div>
+          <div class="field">
+            <div class="fl">Did last week's fix land?</div>
+            <div class="fv">Not yet. Last week's priority was tightening discovery; discovery is now solid (full credit). The leak moved downstream to the close — which is progress, not failure. <span class="small">New priority below.</span></div>
+          </div>
+          <div class="field">
+            <div class="fl">Drill this week — one thing</div>
+            <div class="fv">The assumptive banking ask. State it once, plainly, then stop. Remove "no rush" and the circle-back exit ramp. <span class="small">See the 14:32 moment on call_0617 with your trainer.</span></div>
+          </div>
+          <div class="field">
+            <div class="fl">The 30 seconds worth reviewing together</div>
+            <div class="fv small">call_0617_sandoval-r · 14:32–15:01 — three hedges before the banking ask. A human listened; the note is in the clip.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== REPORT 2: AGENCY-WIDE MACRO REPORT ===== -->
+    <div class="report-block">
+      <div class="rb-head">
+        <span class="kicker">Report 02 — monthly, to the owner</span>
+        <h3 class="display">The Agency-Wide Macro Report</h3>
+      </div>
+      <p class="rb-sub">A team-level read built for you: who's improving, who's coachable, who's stuck — by name — where the team is breaking down, which training is sticking, and how the path to first sale is moving. Without you auditing a single call yourself.</p>
+
+      <!-- short sample -->
+      <div class="sample-strip"><span class="pip">At a glance</span><span class="rule"></span></div>
+      <div class="doc sample reveal">
+        <div class="doc-top"><span class="dt"><b>Cohort read</b> · 10 new agents · June</span><span class="stamp">sample</span></div>
+        <div class="doc-body" style="grid-template-columns:1fr 1fr 1fr;">
+          <div class="leakline"><b class="gold">4 improving</b><br/><span style="font-size:13px;color:var(--cream-3)">implementing fixes week over week</span></div>
+          <div class="leakline"><b style="color:var(--warn)">4 coachable</b><br/><span style="font-size:13px;color:var(--cream-3)">moving, need a sharper priority</span></div>
+          <div class="leakline"><b style="color:var(--stuck)">2 stuck</b><br/><span style="font-size:13px;color:var(--cream-3)">same miss despite coaching</span></div>
+        </div>
+      </div>
+
+      <!-- full -->
+      <div class="sample-strip" style="margin-top:26px"><span class="pip">The whole report</span><span class="rule"></span></div>
+      <div class="doc full reveal">
+        <div class="doc-top"><span class="dt"><b>Agency-Wide Macro Report</b> — June 2026 cohort</span><span class="stamp">10 agents · 118 calls</span></div>
+        <div class="doc-body">
+          <div class="field" style="padding-top:0">
+            <div class="fl">Who's moving — by name</div>
+          </div>
+          <div class="roster">
+            <div class="rrow"><div class="rname">Nina Petrov<span class="rid">agent · wk 5</span></div><div class="rcoach">Closes clean. Ready for harder leads.</div><span class="pill improving">improving</span></div>
+            <div class="rrow"><div class="rname">Ray Sandoval<span class="rid">agent · wk 3</span></div><div class="rcoach">Discovery fixed; banking ask is next.</div><span class="pill improving">improving</span></div>
+            <div class="rrow"><div class="rname">Marcus Hale<span class="rid">agent · wk 4</span></div><div class="rcoach">Skips the social ask under pressure.</div><span class="pill coachable">coachable</span></div>
+            <div class="rrow"><div class="rname">Tyler Boone<span class="rid">agent · wk 6</span></div><div class="rcoach">Same rushed close 3 weeks running.</div><span class="pill stuck">stuck</span></div>
+          </div>
+
+          <div class="ttfs">
+            <div class="fl">Path to first sale — cohort, getting shorter</div>
+            <div class="ttfs-chart">
+              <div class="bar"><div class="col" style="height:84%"><span class="n">19d</span></div><div class="lab">Apr</div></div>
+              <div class="bar"><div class="col" style="height:68%"><span class="n">15d</span></div><div class="lab">May</div></div>
+              <div class="bar now"><div class="col" style="height:53%"><span class="n">12d</span></div><div class="lab">Jun</div></div>
+            </div>
+            <p class="dim" style="margin-top:26px;font-size:14.5px">Days from first real appointment to first sale, cohort median. The leading indicator — it moves first. The lagging numbers (close rate, AP, retention) follow when the ramp shortens.</p>
+          </div>
+
+          <div class="lead-note">
+            <b>Where to point your money:</b> Nina and Ray are converting coaching into closes — they've earned a larger lead allocation. Tyler has repeated the same rushed-close miss three weeks running across 14 leads; pause his premium batch and put him on a live joint dial before spending more. <span style="color:var(--cream-3)">You decide; we provide the evidence.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROTECT YOUR LEAD SPEND ============ -->
+<section class="leadspend">
+  <div class="wrap two-col">
+    <div>
+      <span class="eyebrow">Powered by Lead Allocation Intelligence</span>
+      <p class="insurance-line" style="margin-top:20px">Leads are your budget. This is the insurance policy on them.</p>
+    </div>
+    <div>
+      <p class="dim" style="margin-top:6px">By tracking who's actually implementing coaching week over week, you see which agents are earning more of your leads — and which keep making the same mistake no matter how many you give them. We provide the evidence. You decide where the money goes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WE SELL VISIBILITY ============ -->
+<section class="visibility">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">We sell visibility, not a magic pill</span>
+      <h2 class="display">Anyone selling you overnight numbers is selling you something.</h2>
+    </div>
+    <div class="honest">
+      <p class="dim">We don't promise an instant close-rate jump. What we measure is the path a new agent travels to their first sale, and we show you that path getting shorter, week over week.</p>
+      <p class="dim">Shorten that path and the rest follows — close rate, AP, retention. Those numbers don't move because of a better pep talk. They move when an agent stops making the same mistake. That's the part we make visible.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FIRST 7 DAYS ============ -->
+<section class="sevendays" id="start">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What happens in the first 7 days</span>
+      <h2 class="display">Nothing for your agents to send. Nothing to chase.</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="si"></span><span class="st">You connect your new-agent call recordings.</span></div>
+      <div class="step"><span class="si"></span><span class="st">We run them through Agent Ramp Intelligence against your framework.</span></div>
+      <div class="step"><span class="si"></span><span class="st">Each agent gets their first New Agent Ramp Report.</span></div>
+      <div class="step"><span class="si"></span><span class="st">Your trainers get a focused coaching priority for each one.</span></div>
+      <div class="step"><span class="si"></span><span class="st">You see — for the first time, in plain language — who's improving and who's burning leads.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section class="finalcta">
+  <div class="wrap">
+    <span class="eyebrow">Stop guessing. Start seeing.</span>
+    <h2 class="display" style="margin-top:16px">The agents who make it got the right correction early enough to matter.</h2>
+    <p>The real growth isn't recruiting more people onto a broken ramp — it's the ramp itself. Send us a sample batch of your new-agent calls. We'll show you what's breaking, who's improving, and exactly what your trainers should focus on next.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Analyze My First 10 Calls →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OFFER ============ -->
+<section class="offer">
+  <div class="wrap">
+    <div class="price">$3,000<span> / month</span></div>
+    <p class="anchor">Anchored to your first cohort of ~10 new agents · scales as your team grows.</p>
+    <div class="includes">
+      <span class="inc">Agent Ramp Intelligence</span>
+      <span class="inc">Weekly New Agent Ramp Reports</span>
+      <span class="inc">Call Film Room — human delivery review</span>
+      <span class="inc">Week-to-week fix tracking</span>
+      <span class="inc">Lead Allocation Intelligence</span>
+      <span class="inc">First-sale milestone tracking</span>
+    </div>
+    <p class="built">Built specifically for life insurance agencies onboarding new agents in their first 90 days.</p>
+  </div>
+</section>
+
+<footer class="legal">
+  <div class="wrap">
+    <span class="small">The First 90-Day Agent Ramp System</span>
+    <span class="small">Sample reports throughout — figures &amp; agent names are illustrative.</span>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // --- hero ambient waveform ---
+  function buildWave(id, n, amp, base){
+    var pts=[], w=1200;
+    for(var i=0;i<=n;i++){
+      var x=(i/n)*w;
+      var r=Math.sin(i*0.5)*0.5+Math.sin(i*1.3+1)*0.3+Math.sin(i*0.21)*0.6;
+      var y=base + r*amp*(0.5+0.5*Math.abs(Math.sin(i*0.12)));
+      pts.push(x.toFixed(1)+","+y.toFixed(1));
+    }
+    var el=document.getElementById(id);
+    if(el) el.setAttribute("d","M"+pts.join(" L"));
+  }
+  buildWave("hw",120,46,150);
+  buildWave("hw2",120,30,180);
+
+  // --- player waveform bars ---
+  var svg=document.getElementById("waveSvg");
+  if(svg){
+    var W=600,H=64,n=86,gap=W/n;
+    for(var i=0;i<n;i++){
+      var x=i*gap+gap*0.18;
+      var inWin = (x>=372 && x<=492);
+      var seed=Math.abs(Math.sin(i*1.7)*Math.cos(i*0.6));
+      var h=6+seed*(inWin?54:40);
+      var y=(H-h)/2;
+      var bar=document.createElementNS("http://www.w3.org/2000/svg","rect");
+      bar.setAttribute("x",x.toFixed(1));
+      bar.setAttribute("y",y.toFixed(1));
+      bar.setAttribute("width",(gap*0.5).toFixed(1));
+      bar.setAttribute("height",h.toFixed(1));
+      bar.setAttribute("rx","1.4");
+      bar.setAttribute("fill", inWin ? "#E2B669" : "#3a4650");
+      svg.appendChild(bar);
+    }
+  }
+
+  // --- play micro-interaction: sweep the highlighted window ---
+  var btn=document.getElementById("playBtn"),
+      head=document.getElementById("playhead"),
+      icon=document.getElementById("playIcon");
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var playing=false, raf=null;
+  function setIcon(p){
+    icon.innerHTML = p
+      ? '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>'
+      : '<path d="M8 5v14l11-7z"/>';
+  }
+  if(btn){
+    btn.addEventListener("click",function(){
+      if(reduce){ // no animation; just toggle a static head
+        head.style.opacity = head.style.opacity==="1" ? "0":"1";
+        head.style.left="62%"; return;
+      }
+      if(playing){ cancelAnimationFrame(raf); playing=false; setIcon(false); head.style.opacity="0"; return; }
+      playing=true; setIcon(true); head.style.opacity="1";
+      var start=performance.now(), from=62, to=82, dur=2600;
+      (function step(t){
+        var k=Math.min((t-start)/dur,1);
+        head.style.left=(from+(to-from)*k)+"%";
+        if(k<1){ raf=requestAnimationFrame(step); }
+        else { playing=false; setIcon(false); setTimeout(function(){head.style.opacity="0";},250); }
+      })(start);
+    });
+  }
+
+  // --- scroll reveal ---
+  if("IntersectionObserver" in window && !reduce){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+    },{threshold:0.12});
+    document.querySelectorAll(".reveal").forEach(function(el){io.observe(el);});
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){el.classList.add("in");});
+  }
+})();
+</script>
+</body>
+</html>
