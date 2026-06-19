@@ -8,23 +8,23 @@
 <meta name="description" content="We shorten the time it takes your new agents to make their first sale. A call film room for your first-90-day agents — see exactly where the call breaks, what to coach, and which agents are earning their leads." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#0D0B07;
-    --bg-2:#13100A;
-    --surface:#1A1610;
-    --surface-2:#231E15;
-    --line:#2C2619;
-    --line-2:#3B3322;
-    --cream:#F4ECDC;
-    --cream-2:#D8CCB4;
-    --cream-3:#9A8E77;
-    --gold:#C9A85E;
-    --gold-bright:#DDC07C;
-    --steel:#CBB07A;
-    --navy-deep:#241D12;
-    --good:#86A56E;
+    --bg:#0E1216;
+    --bg-2:#11171D;
+    --surface:#161D24;
+    --surface-2:#1E2831;
+    --line:#283139;
+    --line-2:#37424D;
+    --cream:#FAF7F2;
+    --cream-2:#C7C3BA;
+    --cream-3:#8C897F;
+    --gold:#C4923A;
+    --gold-bright:#E2B669;
+    --steel:#6E9AC9;
+    --navy-deep:#13243A;
+    --good:#6FA877;
     --warn:#CF9B45;
     --stuck:#C16E5C;
     --maxw:1080px;
@@ -37,7 +37,6 @@
 
   body{
     background:var(--bg);
-    background-image:radial-gradient(115% 70% at 50% -12%, #17130C 0%, var(--bg) 58%);
     color:var(--cream);
     font-family:'Inter',-apple-system,BlinkMacSystemFont,system-ui,sans-serif;
     font-size:17px;
@@ -50,7 +49,7 @@
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
 
   /* ---- type ---- */
-  .display{font-family:'Fraunces',Georgia,serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
+  .display{font-family:'Spectral',Georgia,serif;font-weight:600;letter-spacing:-0.01em;line-height:1.08}
   .eyebrow{
     font-family:'IBM Plex Mono',ui-monospace,monospace;
     font-size:12px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;
@@ -67,14 +66,14 @@
   /* ---- header ---- */
   header.site{
     position:sticky;top:0;z-index:50;
-    background:rgba(13,11,7,0.82);
+    background:rgba(14,18,22,0.82);
     backdrop-filter:blur(12px);
     border-bottom:1px solid var(--line);
   }
   .site .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
   .mark{display:flex;align-items:center;gap:11px;color:var(--cream)}
   .mark svg{flex-shrink:0}
-  .mark .name{font-family:'Fraunces',serif;font-weight:600;font-size:16px;letter-spacing:.01em}
+  .mark .name{font-family:'Spectral',serif;font-weight:600;font-size:16px;letter-spacing:.01em}
   .mark .tbd{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--cream-3);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line-2);border-radius:4px;padding:2px 6px;margin-left:2px}
   .nav-cta{
     font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;letter-spacing:.04em;
@@ -110,7 +109,7 @@
   .hero .wrap{position:relative;z-index:2}
   .hero h1{font-size:clamp(2.5rem,6.4vw,4.6rem);max-width:15ch;margin:20px 0 0}
   .hero .promise{font-size:clamp(1.15rem,2.4vw,1.5rem);color:var(--cream);max-width:30ch;margin-top:26px;font-weight:500}
-  .hero .turn{color:var(--gold-bright);font-family:'Fraunces',serif;font-style:italic;font-weight:500}
+  .hero .turn{color:var(--gold-bright);font-family:'Spectral',serif;font-style:italic;font-weight:500}
   .hero .sub{max-width:54ch;margin-top:22px;color:var(--cream-2)}
   .hero .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:38px}
   /* ambient waveform behind hero */
@@ -119,7 +118,7 @@
 
   /* ---- problem / wishing well ---- */
   .pull{
-    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-family:'Spectral',serif;font-style:italic;font-weight:500;
     font-size:clamp(1.4rem,3.2vw,2.1rem);line-height:1.25;color:var(--cream);
     border-left:2px solid var(--gold);padding-left:24px;margin:8px 0 0;max-width:24ch;
   }
@@ -136,12 +135,12 @@
   }
   .player .topline{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:18px}
   .player .file{display:flex;align-items:center;gap:12px;min-width:0}
-  .player .file .ic{width:38px;height:38px;border-radius:9px;background:rgba(201,168,94,.12);border:1px solid rgba(201,168,94,.35);display:grid;place-items:center;color:var(--gold);flex-shrink:0}
+  .player .file .ic{width:38px;height:38px;border-radius:9px;background:rgba(196,146,58,.12);border:1px solid rgba(196,146,58,.35);display:grid;place-items:center;color:var(--gold);flex-shrink:0}
   .player .file .meta{min-width:0}
   .player .file .fname{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--cream);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .player .file .fsub{font-size:12px;color:var(--cream-3);margin-top:2px}
   .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.05em;padding:5px 10px;border-radius:20px;border:1px solid var(--line-2);color:var(--cream-2);white-space:nowrap}
-  .tag.break{color:var(--gold-bright);border-color:rgba(221,192,124,.4);background:rgba(201,168,94,.08)}
+  .tag.break{color:var(--gold-bright);border-color:rgba(226,182,105,.4);background:rgba(196,146,58,.08)}
 
   .wavebox{position:relative;display:flex;align-items:center;gap:14px}
   .play{
@@ -167,18 +166,18 @@
   .ear .avatar{width:40px;height:40px;border-radius:50%;background:var(--navy-deep);border:1px solid var(--line-2);display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--steel);flex-shrink:0}
   .ear .who{font-size:13px;color:var(--cream-3);margin-bottom:6px}
   .ear .who b{color:var(--cream-2);font-weight:600}
-  .ear .quote{font-family:'Fraunces',serif;font-size:1.08rem;line-height:1.5;color:var(--cream)}
+  .ear .quote{font-family:'Spectral',serif;font-size:1.08rem;line-height:1.5;color:var(--cream)}
   .ear .drill{margin-top:12px;font-size:14px;color:var(--cream-2)}
   .ear .drill .lab{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-right:8px}
   .transcript{margin-top:16px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:10px;padding:16px 18px;font-size:14.5px;line-height:1.6;color:var(--cream-2)}
   .transcript .spk{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3);letter-spacing:.04em}
-  .transcript .hl{color:var(--gold-bright);background:rgba(201,168,94,.1);padding:0 3px;border-radius:3px}
+  .transcript .hl{color:var(--gold-bright);background:rgba(196,146,58,.1);padding:0 3px;border-radius:3px}
 
   /* ---- two questions ---- */
   .q-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:8px}
   @media(max-width:680px){.q-grid{grid-template-columns:1fr}}
   .qcard{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px}
-  .qcard .num{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--gold);line-height:1;font-weight:600}
+  .qcard .num{font-family:'Spectral',serif;font-size:2.6rem;color:var(--gold);line-height:1;font-weight:600}
   .qcard h4{font-size:1.2rem;margin:14px 0 10px;font-weight:600}
   .qcard p{font-size:15px;color:var(--cream-2)}
 
@@ -222,7 +221,7 @@
   .leakline{font-size:15px;color:var(--cream-2)}
   .leakline b{color:var(--cream)}
   .fixflag{font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.04em;padding:7px 12px;border-radius:20px;white-space:nowrap}
-  .fixflag.yes{color:var(--good);border:1px solid rgba(134,165,110,.45);background:rgba(134,165,110,.1)}
+  .fixflag.yes{color:var(--good);border:1px solid rgba(111,168,119,.45);background:rgba(111,168,119,.1)}
   .fixflag.no{color:var(--stuck);border:1px solid rgba(193,110,92,.45);background:rgba(193,110,92,.1)}
 
   /* full report internals */
@@ -230,7 +229,7 @@
   @media(max-width:560px){.scoreboard{grid-template-columns:repeat(2,1fr)}}
   .stat{background:var(--surface);padding:16px 16px}
   .stat .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream-3)}
-  .stat .v{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:var(--cream);margin-top:5px;line-height:1}
+  .stat .v{font-family:'Spectral',serif;font-size:1.7rem;font-weight:600;color:var(--cream);margin-top:5px;line-height:1}
   .stat .d{font-family:'IBM Plex Mono',monospace;font-size:11px;margin-top:5px}
   .stat .d.up{color:var(--good)}
   .stat .d.down{color:var(--stuck)}
@@ -241,7 +240,7 @@
   .field .fl{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:7px}
   .field .fv{font-size:15.5px;color:var(--cream)}
   .field .fv .small{color:var(--cream-2);font-size:14.5px}
-  .miss{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright);border:1px solid rgba(221,192,124,.35);background:rgba(201,168,94,.08);padding:3px 9px;border-radius:6px;margin:0 2px}
+  .miss{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold-bright);border:1px solid rgba(226,182,105,.35);background:rgba(196,146,58,.08);padding:3px 9px;border-radius:6px;margin:0 2px}
 
   /* macro report */
   .roster{display:grid;gap:10px}
@@ -251,7 +250,7 @@
   .rrow .rname .rid{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream-3);display:block;margin-top:1px}
   .rrow .rcoach{font-size:13.5px;color:var(--cream-2)}
   .pill{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.04em;padding:6px 12px;border-radius:20px;white-space:nowrap;text-align:center}
-  .pill.improving{color:var(--good);border:1px solid rgba(134,165,110,.45);background:rgba(134,165,110,.1)}
+  .pill.improving{color:var(--good);border:1px solid rgba(111,168,119,.45);background:rgba(111,168,119,.1)}
   .pill.coachable{color:var(--warn);border:1px solid rgba(207,155,69,.45);background:rgba(207,155,69,.1)}
   .pill.stuck{color:var(--stuck);border:1px solid rgba(193,110,92,.45);background:rgba(193,110,92,.1)}
 
@@ -267,7 +266,7 @@
   .lead-note b{color:var(--cream)}
 
   /* ---- lead spend ---- */
-  .insurance-line{font-family:'Fraunces',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,1.8rem);color:var(--cream);max-width:22ch}
+  .insurance-line{font-family:'Spectral',serif;font-style:italic;font-size:clamp(1.3rem,2.8vw,1.8rem);color:var(--cream);max-width:22ch}
 
   /* ---- visibility honesty ---- */
   .visibility{background:var(--bg-2)}
@@ -283,7 +282,7 @@
   .step .st{font-size:16px;color:var(--cream)}
 
   /* ---- final cta ---- */
-  .finalcta{text-align:center;background:radial-gradient(120% 120% at 50% 0%,rgba(201,168,94,.08),transparent 60%)}
+  .finalcta{text-align:center;background:radial-gradient(120% 120% at 50% 0%,rgba(196,146,58,.08),transparent 60%)}
   .finalcta h2{margin:0 auto;max-width:16ch}
   .finalcta p{max-width:56ch;margin:22px auto 0;color:var(--cream-2)}
   .finalcta .cta-row{justify-content:center;margin-top:36px;display:flex;flex-wrap:wrap;gap:14px}
@@ -291,7 +290,7 @@
   /* ---- offer footer ---- */
   .offer{border-top:1px solid var(--line-2);background:var(--surface)}
   .offer .wrap{padding-top:60px;padding-bottom:60px}
-  .offer .price{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--gold)}
+  .offer .price{font-family:'Spectral',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:var(--gold)}
   .offer .price span{font-size:1.1rem;color:var(--cream-2);font-family:'Inter',sans-serif;font-weight:500}
   .offer .anchor{color:var(--cream-2);margin-top:8px}
   .offer .includes{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;max-width:760px}
@@ -315,9 +314,9 @@
   <div class="wrap">
     <div class="mark" aria-label="The 90-Day Agent Ramp System">
       <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <rect x="4" y="20" width="5" height="8" rx="1.5" fill="#C9A85E"/>
-        <rect x="13.5" y="13" width="5" height="15" rx="1.5" fill="#C9A85E"/>
-        <rect x="23" y="5" width="5" height="23" rx="1.5" fill="#DDC07C"/>
+        <rect x="4" y="20" width="5" height="8" rx="1.5" fill="#C4923A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.5" fill="#C4923A"/>
+        <rect x="23" y="5" width="5" height="23" rx="1.5" fill="#E2B669"/>
       </svg>
       <span class="name">The 90-Day Ramp System</span>
     </div>
@@ -339,8 +338,8 @@
   </div>
   <div class="hero-wave" aria-hidden="true">
     <svg viewBox="0 0 1200 240" preserveAspectRatio="none">
-      <path id="hw" fill="none" stroke="#C9A85E" stroke-width="1.4" opacity="0.55"/>
-      <path id="hw2" fill="none" stroke="#7C6A47" stroke-width="1" opacity="0.25"/>
+      <path id="hw" fill="none" stroke="#C4923A" stroke-width="1.4" opacity="0.55"/>
+      <path id="hw2" fill="none" stroke="#6E9AC9" stroke-width="1" opacity="0.25"/>
     </svg>
   </div>
 </section>
@@ -392,7 +391,7 @@
           <span class="window-label" id="winLabel" style="left:62%">the 30 seconds →</span>
           <svg viewBox="0 0 600 64" preserveAspectRatio="none" id="waveSvg" aria-hidden="true">
             <!-- highlighted window backdrop -->
-            <rect id="winRect" x="372" y="0" width="120" height="64" fill="rgba(201,168,94,0.12)" rx="3"/>
+            <rect id="winRect" x="372" y="0" width="120" height="64" fill="rgba(196,146,58,0.12)" rx="3"/>
           </svg>
           <div class="playhead" id="playhead" style="left:62%"></div>
         </div>
@@ -687,7 +686,7 @@
       bar.setAttribute("width",(gap*0.5).toFixed(1));
       bar.setAttribute("height",h.toFixed(1));
       bar.setAttribute("rx","1.4");
-      bar.setAttribute("fill", inWin ? "#DDC07C" : "#473F30");
+      bar.setAttribute("fill", inWin ? "#E2B669" : "#3a4650");
       svg.appendChild(bar);
     }
   }
