@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escensus — The First 90-Day Agent Ramp System</title>
+<meta name="description" content="A call film room for your new agents. We find the moment the sale breaks and coach the one thing that fixes it — and we shorten the time to a new agent's first sale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* inverted from the report: the dark blocks, opened up to a full canvas */
+    --canvas:#0B0A06;        /* deep charcoal */
+    --surface:#131109;       /* lifted panel */
+    --surface-2:#1A1710;     /* card */
+    --surface-3:#221E15;     /* inset (mirrors the report film-room clip) */
+    --line:#2A251B;          /* hairline on dark */
+    --line-soft:#352F25;
+    --ink:#F3ECDC;           /* headings, warm off-white */
+    --ink-soft:#DED3BC;      /* body */
+    --ink-mut:#A99C82;       /* muted */
+    --ink-faint:#867B69;     /* faint labels */
+    --gold:#C9A85E;          /* the precious accent */
+    --gold-bright:#D9B96E;
+    --green:#9DB287;         /* "hit" on dark (lightened) */
+    --green-bg:rgba(78,107,74,.16);
+    --green-line:rgba(143,166,126,.40);
+    --clay:#D08A72;          /* the break (lightened clay) */
+    --clay-bg:rgba(159,76,54,.16);
+    --clay-line:rgba(199,122,99,.55);
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --maxw:1080px;
+    --readw:680px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{
+    background:var(--canvas);
+    color:var(--ink-soft);
+    font-family:var(--sans);
+    font-size:16px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    /* a single, barely-there warm light from the top — premium, not loud */
+    background-image:radial-gradient(120% 60% at 50% -10%, #17130C 0%, var(--canvas) 60%);
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .read{max-width:var(--readw);}
+  a{color:inherit;}
+
+  ::selection{background:rgba(201,168,94,.26);color:#fff;}
+
+  /* shared section furniture */
+  .eyebrow{
+    font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;
+  }
+  .sec{padding:84px 0;border-top:1px solid var(--line);}
+  .sec:first-of-type{border-top:0;}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;color:var(--ink);letter-spacing:-.012em;line-height:1.12;}
+  h2{font-size:32px;margin-top:14px;}
+  h3{font-size:20px;}
+  p{color:var(--ink-soft);}
+  .lead{font-size:19px;color:var(--ink-soft);}
+  .mut{color:var(--ink-mut);}
+  .gold{color:var(--gold);}
+  .em{color:var(--ink);font-style:italic;}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky;top:0;z-index:20;
+    background:rgba(11,10,6,.82);
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .bar{display:flex;align-items:center;justify-content:space-between;height:68px;gap:18px;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .mono{
+    width:34px;height:34px;border:1.5px solid var(--gold);border-radius:6px;
+    display:flex;align-items:center;justify-content:center;flex:none;
+    font-family:var(--serif);font-weight:600;font-size:18px;color:var(--gold);
+    background:linear-gradient(180deg,rgba(201,168,94,.12),rgba(201,168,94,0));
+  }
+  .brand .name{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--ink);letter-spacing:.01em;}
+  nav{display:flex;align-items:center;gap:26px;}
+  nav a{color:var(--ink-mut);text-decoration:none;font-size:14px;transition:color .18s;}
+  nav a:hover{color:var(--ink);}
+
+  .btn{
+    display:inline-block;font-family:var(--sans);font-weight:600;font-size:14.5px;
+    cursor:pointer;border-radius:8px;padding:11px 20px;text-decoration:none;
+    transition:transform .12s ease, box-shadow .2s ease, background .2s ease, color .2s ease;
+    border:1px solid transparent;white-space:nowrap;
+  }
+  .btn.gold{
+    background:linear-gradient(180deg,var(--gold-bright),var(--gold));
+    color:#1A150B;box-shadow:0 1px 0 rgba(255,255,255,.18) inset, 0 8px 22px rgba(201,168,94,.16);
+  }
+  .btn.gold:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.22) inset,0 12px 30px rgba(201,168,94,.24);}
+  .btn.ghost{background:transparent;color:var(--ink);border-color:var(--line-soft);}
+  .btn.ghost:hover{border-color:var(--gold);color:var(--gold);}
+  .btn.sm{padding:9px 15px;font-size:13.5px;}
+  .header-cta{display:flex;align-items:center;gap:18px;}
+
+  .cta-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:30px;}
+  .cta-row .alt{color:var(--ink-mut);font-size:14.5px;text-decoration:none;border-bottom:1px solid var(--line-soft);padding-bottom:2px;transition:color .18s,border-color .18s;}
+  .cta-row .alt:hover{color:var(--ink);border-color:var(--gold);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:86px 0 72px;}
+  .hero .eyebrow{display:block;margin-bottom:20px;}
+  .hero h1{
+    font-size:clamp(38px,6vw,60px);font-weight:600;line-height:1.04;max-width:18ch;
+  }
+  .hero h1 .gold{font-style:italic;}
+  .hero .sub{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:54ch;margin-top:26px;line-height:1.5;}
+  .hero .who{margin-top:18px;font-size:14.5px;color:var(--ink-faint);letter-spacing:.01em;}
+  .hero .who b{color:var(--ink-mut);font-weight:600;}
+
+  /* ---------- pain / editorial pull ---------- */
+  .pull{
+    border-left:2px solid var(--gold);padding:6px 0 6px 26px;max-width:var(--readw);
+  }
+  .pull p{font-family:var(--serif);font-size:clamp(20px,2.6vw,26px);line-height:1.4;color:var(--ink);font-weight:400;}
+  .pull p .mut{color:var(--ink-mut);}
+  .pull .tail{font-family:var(--sans);font-size:15px;color:var(--ink-mut);margin-top:16px;font-style:normal;}
+
+  /* ---------- call spine ---------- */
+  .spine-card{
+    margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:14px;
+    padding:26px 26px 22px;
+  }
+  .spine-label{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;margin-bottom:16px;}
+  .spine{display:flex;gap:8px;align-items:stretch;}
+  .beat{
+    flex:1;min-width:0;text-align:center;padding:14px 6px 12px;border-radius:8px;
+    background:var(--surface-2);border:1px solid var(--line);
+    font-size:13px;line-height:1.25;color:var(--ink-mut);position:relative;
+  }
+  .beat .bt{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:6px;}
+  .beat.hit{background:var(--green-bg);border-color:var(--green-line);color:var(--green);}
+  .beat.hit .bt{color:var(--green);opacity:.8;}
+  .beat.brk{background:var(--clay-bg);border-color:var(--clay-line);color:var(--clay);font-weight:600;box-shadow:0 0 0 1px var(--clay-line);}
+  .beat.brk .bt{color:var(--clay);}
+  .spine-cap{margin-top:16px;font-size:13px;color:var(--ink-faint);line-height:1.5;}
+  .spine-cap b{color:var(--ink-mut);font-weight:600;}
+
+  /* ---------- the two questions + collapsible ---------- */
+  .qs{margin-top:26px;max-width:760px;}
+  .q{
+    display:flex;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid var(--line);
+  }
+  .q:first-child{border-top:1px solid var(--line);}
+  .q .num{font-family:var(--serif);font-size:22px;color:var(--gold);font-weight:600;line-height:1;flex:none;width:28px;}
+  .q .qt{font-family:var(--serif);font-size:clamp(20px,2.6vw,25px);color:var(--ink);font-weight:500;line-height:1.25;}
+  .falls{margin-top:18px;font-size:16px;color:var(--ink-mut);}
+  .falls b{color:var(--ink);font-weight:600;}
+
+  details.layer{
+    margin-top:26px;border:1px solid var(--line);border-radius:12px;background:var(--surface);
+    overflow:hidden;transition:border-color .2s;
+  }
+  details.layer[open]{border-color:var(--line-soft);}
+  details.layer summary{
+    list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;gap:12px;
+    font-weight:600;color:var(--ink);font-size:15px;
+  }
+  details.layer summary::-webkit-details-marker{display:none;}
+  details.layer summary .chev{
+    margin-left:auto;color:var(--gold);transition:transform .22s ease;font-size:18px;line-height:1;
+  }
+  details.layer[open] summary .chev{transform:rotate(90deg);}
+  details.layer summary .hint{color:var(--ink-faint);font-weight:400;font-size:13px;letter-spacing:.02em;}
+  .layer-body{padding:2px 22px 22px;display:grid;gap:18px;}
+  .layer-item .lh{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+  .layer-item p{font-size:15px;color:var(--ink-soft);line-height:1.55;}
+  .layer-item p .mut{color:var(--ink-mut);}
+
+  /* ---------- two layers: scoreboard vs engine ---------- */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px;}
+  .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px 24px 22px;}
+  .panel.engine{border-color:rgba(201,168,94,.28);background:linear-gradient(180deg,rgba(201,168,94,.05),var(--surface));}
+  .panel .pk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:600;}
+  .panel.engine .pk{color:var(--gold);}
+  .panel h3{margin:8px 0 12px;}
+  .panel p{font-size:15.5px;line-height:1.55;}
+  .panel p .mut{color:var(--ink-mut);}
+  .panel .stat-line{margin-top:14px;font-size:13px;color:var(--ink-faint);font-family:var(--sans);}
+
+  /* ---------- what you get: three ---------- */
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;}
+  .get{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;}
+  .get .gk{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;}
+  .get h3{font-size:18px;margin:10px 0 10px;}
+  .get p{font-size:14.5px;color:var(--ink-mut);line-height:1.55;}
+  .get p b{color:var(--ink-soft);font-weight:600;}
+
+  /* ---------- success metric stepper ---------- */
+  .stepper{margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:30px 26px;}
+  .steps{display:flex;align-items:flex-start;gap:0;position:relative;}
+  .step{flex:1;text-align:center;position:relative;padding-top:26px;}
+  .step::before{ /* the rail */
+    content:"";position:absolute;top:7px;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,var(--line-soft),var(--gold));
+  }
+  .step:first-child::before{left:50%;}
+  .step:last-child::before{right:50%;background:linear-gradient(90deg,var(--gold),var(--gold));}
+  .step .dot{
+    position:absolute;top:1px;left:50%;transform:translateX(-50%);
+    width:13px;height:13px;border-radius:50%;background:var(--canvas);border:2px solid var(--gold);
+  }
+  .step:last-child .dot{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,94,.16);}
+  .step .sl{font-size:13.5px;color:var(--ink-soft);font-weight:500;}
+  .step .sd{font-size:11px;color:var(--ink-faint);margin-top:3px;}
+  .stepper .scopy{margin-top:24px;font-size:15.5px;color:var(--ink-mut);line-height:1.55;max-width:62ch;}
+  .stepper .scopy b{color:var(--ink);font-weight:600;}
+
+  /* ---------- owner payoff ---------- */
+  .payoff h2{max-width:18ch;}
+  .payoff .big{font-family:var(--serif);font-size:clamp(26px,4vw,40px);color:var(--ink);font-weight:500;line-height:1.15;max-width:20ch;}
+  .payoff .big .gold{font-style:italic;}
+
+  /* ---------- price ---------- */
+  .price-card{
+    margin-top:30px;background:linear-gradient(180deg,var(--surface-2),var(--surface));
+    border:1px solid var(--line-soft);border-radius:16px;padding:36px;
+    display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;
+  }
+  .price-num{border-right:1px solid var(--line);padding-right:34px;}
+  .price-num .p{font-family:var(--serif);font-size:clamp(38px,6vw,54px);color:var(--ink);font-weight:600;line-height:1;}
+  .price-num .p .per{font-size:18px;color:var(--ink-faint);font-weight:400;}
+  .price-num .anchor{font-size:13.5px;color:var(--ink-mut);margin-top:12px;max-width:22ch;line-height:1.45;}
+  .price-frame .ff{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.45;font-weight:400;}
+  .price-frame .ff .gold{font-style:italic;}
+  .price-frame .nopromise{margin-top:18px;padding-top:16px;border-top:1px solid var(--line);font-size:14px;color:var(--ink-mut);line-height:1.55;}
+  .price-frame .nopromise b{color:var(--ink-soft);font-weight:600;}
+
+  /* ---------- positioning ---------- */
+  .pos-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;}
+  .pos-grid .shovel{font-family:var(--serif);font-size:clamp(22px,3vw,30px);color:var(--ink);line-height:1.3;font-weight:500;}
+  .pos-grid .shovel .gold{font-style:italic;}
+  .pos-grid .why p{font-size:16px;color:var(--ink-mut);line-height:1.6;}
+  .pos-grid .why p + p{margin-top:14px;}
+  .valueline{
+    margin-top:40px;text-align:center;border:1px solid var(--line);border-radius:14px;
+    padding:30px;background:var(--surface);
+  }
+  .valueline span{font-family:var(--serif);font-size:clamp(20px,3vw,28px);color:var(--ink);font-weight:500;}
+  .valueline span .gold{color:var(--gold);font-style:italic;}
+
+  /* ---------- final cta ---------- */
+  .final{text-align:center;padding:96px 0;border-top:1px solid var(--line);}
+  .final h2{font-size:clamp(28px,4.6vw,44px);max-width:20ch;margin:0 auto;}
+  .final .cta-row{justify-content:center;margin-top:34px;}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:34px 0 48px;}
+  .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:center;}
+  .foot .fb{display:flex;align-items:center;gap:11px;}
+  .foot .fmono{width:26px;height:26px;border:1px solid var(--line-soft);border-radius:5px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);color:var(--gold);font-size:14px;}
+  .foot .fname{font-family:var(--serif);color:var(--ink-mut);font-size:15px;}
+  .foot .fnote{font-size:12px;color:var(--ink-faint);letter-spacing:.02em;}
+
+  /* ---------- reveal (additive; content visible if JS/motion off) ---------- */
+  .anim .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);}
+  .anim .reveal.in{opacity:1;transform:none;}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:860px){
+    .two,.three,.pos-grid{grid-template-columns:1fr;}
+    .price-card{grid-template-columns:1fr;gap:24px;}
+    .price-num{border-right:0;border-bottom:1px solid var(--line);padding-right:0;padding-bottom:22px;}
+    nav{display:none;}
+  }
+  @media(max-width:680px){
+    .sec{padding:60px 0;}
+    .hero{padding:60px 0 52px;}
+    .beat .bt{display:none;}
+    .beat{font-size:11.5px;padding:11px 4px;}
+    .spine{gap:5px;}
+    .step .sd{display:none;}
+    .header-cta .btn{display:none;} /* keep header clean on mobile; hero CTA carries it */
+  }
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important;}.anim .reveal{opacity:1!important;transform:none!important;transition:none!important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <div class="brand">
+      <div class="mono">E</div>
+      <span class="name">Escensus</span>
+    </div>
+    <nav>
+      <a href="#method">The method</a>
+      <a href="#get">What you get</a>
+      <a href="#price">Pricing</a>
+    </nav>
+    <div class="header-cta">
+      <a href="#price" class="btn gold sm">Analyze my first 10 calls</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow reveal">The First 90-Day Agent Ramp System</span>
+      <h1 class="reveal">We shorten the time it takes your new agents to make their first <span class="gold">sale</span>.</h1>
+      <p class="sub reveal">A call film room for your new agents. We review the tape, find the moment the sale breaks, and coach the one thing that fixes it — an athletic coach, not a compliance cop.</p>
+      <p class="who reveal">For <b>agency owners</b> · focused on the first 90 days, where agents are won or lost.</p>
+      <div class="cta-row reveal">
+        <a href="#price" class="btn gold">Analyze my first 10 calls</a>
+        <a href="#final" class="alt">or book a walkthrough</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="pull reveal">
+        <p>You can hear exactly where an agent loses the sale — it's right there on the call. But <span class="mut">nobody has time to listen to every call from every new agent.</span> So the agent gets generic training when what they needed was one specific fix.</p>
+        <p class="tail">The recordings pile up in a folder and tell you nothing. A wishing well.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALL SPINE -->
+  <section class="sec" id="method">
+    <div class="wrap">
+      <span class="eyebrow reveal">The call, beat by beat</span>
+      <h2 class="reveal">We find the one moment the sale breaks.</h2>
+      <p class="lead read reveal" style="margin-top:14px;color:var(--ink-mut);">Every call is mapped against your script's beats. We don't grade the whole thing — we find the single beat where the conversation turned, and we coach that.</p>
+
+      <div class="spine-card reveal">
+        <div class="spine-label">Where the call went — representative call</div>
+        <div class="spine">
+          <div class="beat hit">Intro<span class="bt">hit</span></div>
+          <div class="beat hit">Discovery<span class="bt">hit</span></div>
+          <div class="beat brk">Social ask<span class="bt">lost here</span></div>
+          <div class="beat">Banking ask<span class="bt">—</span></div>
+          <div class="beat">Pre-close<span class="bt">—</span></div>
+          <div class="beat">Close<span class="bt">—</span></div>
+        </div>
+        <p class="spine-cap"><b>The break isn't always where it looks.</b> A stalled close often starts in a thin discovery — so we trace it back to the root and name the most likely fix. Illustrative.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TWO QUESTIONS + LAYER -->
+  <section class="sec">
+    <div class="wrap">
+      <span class="eyebrow reveal">What we measure</span>
+      <h2 class="reveal">Two questions about every new agent.</h2>
+
+      <div class="qs reveal">
+        <div class="q"><span class="num">1</span><span class="qt">Are they following the framework?</span></div>
+        <div class="q"><span class="num">2</span><span class="qt">Are they fixing what we coach?</span></div>
+      </div>
+      <p class="falls reveal"><b>Everything else falls out of those two.</b></p>
+
+      <details class="layer reveal">
+        <summary>One layer down <span class="hint">— only if you want it</span><span class="chev">›</span></summary>
+        <div class="layer-body">
+          <div class="layer-item">
+            <div class="lh">Following the framework</div>
+            <p>Hitting the beats in order — intro, discovery, social ask, banking ask, pre-close, close. <span class="mut">Not every syllable word-for-word; the milestones.</span> We catch which one they missed.</p>
+          </div>
+          <div class="layer-item">
+            <div class="lh">Fixing what we coach</div>
+            <p>We find where they're losing the sale, send the one drill that week, then check the next week whether it stuck. <span class="mut">Training only counts when it turns into change.</span></p>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- SCOREBOARD VS ENGINE -->
+  <section class="sec">
+    <div class="wrap">
+      <span class="eyebrow reveal">Two layers</span>
+      <h2 class="reveal">Your CRM tells you <span class="gold" style="font-style:italic;">that</span>. We tell you <span class="gold" style="font-style:italic;">where</span> and <span class="gold" style="font-style:italic;">why</span>.</h2>
+      <div class="two">
+        <div class="panel reveal">
+          <div class="pk">The scoreboard · your CRM</div>
+          <h3>The numbers you already have.</h3>
+          <p>Close rate, show rate, appointment-set rate, average AP. <span class="mut">It tells you that an agent is struggling. It never tells you where, or why.</span></p>
+        </div>
+        <div class="panel engine reveal">
+          <div class="pk">The engine · what nobody else does</div>
+          <h3>The reason behind the number.</h3>
+          <p>Where in the script they lose it. A framework miss or a delivery miss. Whether last week's fix stuck. We surface the <b style="color:var(--ink);font-weight:600;">most likely coaching opportunity</b> — because where a call breaks is rarely why it broke.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT YOU GET -->
+  <section class="sec" id="get">
+    <div class="wrap">
+      <span class="eyebrow reveal">What you get</span>
+      <h2 class="reveal">A weekly read, a monthly picture, and a human ear.</h2>
+      <div class="three">
+        <div class="get reveal">
+          <div class="gk">Weekly · per agent</div>
+          <h3>The one fix that matters</h3>
+          <p>The numbers, <b>where they're losing it</b>, and the single module to drill this week. One focus — not twelve.</p>
+        </div>
+        <div class="get reveal">
+          <div class="gk">Monthly · to the owner</div>
+          <h3>The team, by name</h3>
+          <p>Team patterns, <b>who's improving</b>, and time-to-first-sale moving — so you know where to invest and where to pull back.</p>
+        </div>
+        <div class="get reveal">
+          <div class="gk">Always · on delivery</div>
+          <h3>A human ear</h3>
+          <p>Framework is measured automatically. <b>How they say it</b> gets a closer's ear on the exact thirty seconds the call turned. Human review, not an AI tone score.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUCCESS METRIC -->
+  <section class="sec">
+    <div class="wrap">
+      <span class="eyebrow reveal">How we prove it worked</span>
+      <h2 class="reveal">The road to the first sale — measured.</h2>
+      <div class="stepper reveal">
+        <div class="steps">
+          <div class="step"><span class="dot"></span><div class="sl">First appointment</div><div class="sd">days from start</div></div>
+          <div class="step"><span class="dot"></span><div class="sl">First sit</div><div class="sd">days from start</div></div>
+          <div class="step"><span class="dot"></span><div class="sl">First application</div><div class="sd">days from start</div></div>
+          <div class="step"><span class="dot"></span><div class="sl">First sale</div><div class="sd">days from start</div></div>
+        </div>
+        <p class="scopy">For every new agent we track the days to each milestone — <b>before and after</b> — straight from your CRM's timestamps. Thin in the first weeks; by month three it's a single line: <b>time-to-first-sale dropped from X to Y</b>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OWNER PAYOFF -->
+  <section class="sec payoff">
+    <div class="wrap">
+      <span class="eyebrow reveal">The owner payoff · Lead Allocation Intelligence</span>
+      <div class="big reveal" style="margin-top:16px;">Your leads are the budget. <span class="gold">This protects them.</span></div>
+      <p class="lead read reveal mut" style="margin-top:20px;">Once you can see which new agents convert the calls you hand them, you can see where your lead dollars should go. You decide — we give you the evidence.</p>
+    </div>
+  </section>
+
+  <!-- PRICE -->
+  <section class="sec" id="price">
+    <div class="wrap">
+      <span class="eyebrow reveal">Pricing</span>
+      <h2 class="reveal">Priced as insurance on your lead spend.</h2>
+      <div class="price-card reveal">
+        <div class="price-num">
+          <div class="p">$3,000<span class="per"> / month</span></div>
+          <div class="anchor">Anchored as your new-agent program — about ten agents.</div>
+        </div>
+        <div class="price-frame">
+          <p class="ff">A $1,500 lead batch handed to an unmonitored rookie is a gamble. With this, it's a <span class="gold">controlled lab</span> — within seven days you know who's earning their leads and who's melting your capital.</p>
+          <p class="nopromise"><b>What we don't promise:</b> a guaranteed close-rate number. We sell visibility — the clearest possible view of where the sale is won and lost.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSITIONING / WHY NOW -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="pos-grid">
+        <div class="shovel reveal">We don't replace your trainer or your bootcamp. We supplement them — and prove they're working. <span class="gold">The shovel for the people mining the gold.</span></div>
+        <div class="why reveal">
+          <p>You're already having new agents record their calls. But recording isn't the same as knowing whether the coaching stuck.</p>
+          <p>We're the layer that turns recordings into proof.</p>
+        </div>
+      </div>
+      <div class="valueline reveal">
+        <span>Six hours of one-on-one, distilled to a <span class="gold">six-minute read.</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final" id="final">
+    <div class="wrap">
+      <h2 class="reveal">See where your new agents are losing the sale.</h2>
+      <div class="cta-row reveal">
+        <a href="#" class="btn gold">Analyze my first 10 calls</a>
+        <a href="#" class="alt">or book a walkthrough</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div class="fb">
+      <div class="fmono">E</div>
+      <span class="fname">Escensus · The First 90-Day Agent Ramp System</span>
+    </div>
+    <div class="fnote">Illustrative throughout — figures shown are examples. © 2026 Escensus.</div>
+  </div>
+</footer>
+
+<script>
+  // Progressive enhancement only: content is fully visible without this.
+  (function(){
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(reduce || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('anim');
+    var els = document.querySelectorAll('.reveal');
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+    els.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>
